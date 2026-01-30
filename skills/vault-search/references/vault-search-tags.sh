@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 # vault-search-tags: Find documents by tag
-# Usage: vault-search-tags <tag> [vault_dir]
+# Usage: vault-search-tags <tag>
 
 set -euo pipefail
 
 if [[ $# -lt 1 ]]; then
-    echo "Usage: vault-search-tags <tag> [vault_dir]" >&2
+    echo "Usage: vault-search-tags <tag>" >&2
     exit 1
 fi
 
 TAG="$1"
-VAULT_DIR="${2:-$PWD}"
+VAULT_DIR="${CLAUDE_OBSIDIAN_VAULT_DIRECTORY:-$PWD}"
 
 # Header
 echo "File | Tags | Description"

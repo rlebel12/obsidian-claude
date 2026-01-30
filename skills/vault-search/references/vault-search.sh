@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 # vault-search: Search document content
-# Usage: vault-search <pattern> [vault_dir]
+# Usage: vault-search <pattern>
 # Groups results by file with metadata headers
 
 set -euo pipefail
 
 if [[ $# -lt 1 ]]; then
-    echo "Usage: vault-search <pattern> [vault_dir]" >&2
+    echo "Usage: vault-search <pattern>" >&2
     exit 1
 fi
 
 PATTERN="$1"
-VAULT_DIR="${2:-$PWD}"
+VAULT_DIR="${CLAUDE_OBSIDIAN_VAULT_DIRECTORY:-$PWD}"
 
 # Get list of matching files
 files=$(rg --type md \
