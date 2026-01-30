@@ -25,14 +25,14 @@ Search an Obsidian vault by content or by tag. Choose the appropriate tool based
 Search document content using ripgrep. Returns matching lines with context.
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/skills/vault-search/references/vault-search <pattern>
+${CLAUDE_PLUGIN_ROOT}/vault-search.sh <pattern>
 ```
 
 **Output**: Results grouped by file showing Name, Tags, Description, then matching lines.
 
 **Example**:
 ```bash
-${CLAUDE_PLUGIN_ROOT}/skills/vault-search/references/vault-search nvidia
+${CLAUDE_PLUGIN_ROOT}/vault-search.sh nvidia
 ```
 
 ## Tag Search: `vault-search-tags`
@@ -40,14 +40,14 @@ ${CLAUDE_PLUGIN_ROOT}/skills/vault-search/references/vault-search nvidia
 Find documents by frontmatter tag. Returns a table of matching documents.
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/skills/vault-search/references/vault-search-tags <tag>
+${CLAUDE_PLUGIN_ROOT}/vault-search-tags.sh <tag>
 ```
 
 **Output**: Markdown table with File, Tags, Description columns.
 
 **Example**:
 ```bash
-${CLAUDE_PLUGIN_ROOT}/skills/vault-search/references/vault-search-tags hardware
+${CLAUDE_PLUGIN_ROOT}/vault-search-tags.sh hardware
 ```
 
 ## Script References
