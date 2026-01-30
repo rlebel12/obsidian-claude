@@ -10,16 +10,22 @@ claude plugins add ~/code/obsidian-claude
 
 ## Features
 
-### SessionStart Hook
-
-When Claude Code starts in an Obsidian vault (directory containing `.obsidian/`), the plugin automatically generates an index of all markdown files with their tags and descriptions. This gives Claude immediate context about available documentation.
-
 ### Skills
 
-Two skills are available for finding vault content:
+The `/vault-search` skill provides two search modes:
 
-- `/vault-search <pattern>` - Search document content using ripgrep. Returns matching lines grouped by file with metadata headers.
-- `/vault-search-tags <tag>` - Find documents by tag. Returns all documents containing the specified tag in frontmatter.
+- **Content Search** - Find documents containing specific words or phrases using ripgrep
+- **Tag Search** - Find documents by frontmatter tag classification
+
+A PreToolUse hook validates that `CLAUDE_OBSIDIAN_VAULT_DIRECTORY` is set before running searches.
+
+### Environment Variable
+
+Set `CLAUDE_OBSIDIAN_VAULT_DIRECTORY` to your vault path:
+
+```bash
+export CLAUDE_OBSIDIAN_VAULT_DIRECTORY=~/path/to/vault
+```
 
 ## Frontmatter Requirements
 
@@ -44,20 +50,18 @@ description: Brief one-line summary of the document
 Add this section to your vault's CLAUDE.md:
 
 ```markdown
-## Vault Discovery
+## Vault Search
 
-Vault indexing and search provided by the `obsidian` plugin from `obsidian-claude` marketplace. Use `/vault-search` and `/vault-search-tags` skills to search vault content.
+Use `/vault-search` to search vault content by text or tags.
 ```
 
 ## How It Works
 
-The plugin detects Obsidian vaults by checking for the `.obsidian/` directory. When found:
+1. User invokes `/vault-search`
+2. PreToolUse hook validates `CLAUDE_OBSIDIAN_VAULT_DIRECTORY` is set
+3. Skill provides scripts for content search (`vault-search.sh`) and tag search (`vault-search-tags.sh`)
 
-1. **SessionStart hook** runs `vault-index.sh` to scan all `.md` files
-2. Frontmatter is parsed to extract `tags` and `description` metadata
-3. A table is output showing available documentation
-
-Scripts use `fd` for file discovery and `rg` (ripgrep) for content search. Both are commonly available on developer machines.
+Scripts use `fd` for file discovery and `rg` (ripgrep) for content search.
 
 ## License
 
