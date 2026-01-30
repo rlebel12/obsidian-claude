@@ -2,7 +2,7 @@
   "name": "obsidian-claude",
   "description": "Claude Code integration for Obsidian vaults",
   "owner": {
-    "name": "Rob"
+    "name": "rlebel12"
   },
   "plugins": [
     {

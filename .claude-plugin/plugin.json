@@ -1,6 +1,5 @@
 {
   "name": "obsidian",
   "description": "Vault discovery and search tools for Obsidian",
-  "version": "1.0.0",
-  "category": "productivity"
+  "version": "1.0.0"
 }
