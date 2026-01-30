@@ -29,6 +29,4 @@ vault-search-tags nvidia
 
 ## Script Reference
 
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/vault-search-tags "$@"
-```
+[references/vault-search-tags](references/vault-search-tags)
