@@ -8,9 +8,7 @@
     {
       "name": "obsidian",
       "description": "Vault discovery and search tools for Obsidian",
-      "source": "./",
-      "version": "1.0.0",
-      "category": "productivity"
+      "source": "./"
     }
   ]
 }

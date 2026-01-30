@@ -2,7 +2,17 @@
   "name": "obsidian",
   "description": "Vault discovery and search tools for Obsidian",
   "version": "1.0.0",
-  "author": {
-    "name": "Rob"
-  }
+  "category": "productivity",
+  "skills": [
+    {
+      "name": "vault-search",
+      "description": "Search document content in an Obsidian vault",
+      "prompt": "skills/vault-search.md"
+    },
+    {
+      "name": "vault-search-tags",
+      "description": "Find documents by tag in an Obsidian vault",
+      "prompt": "skills/vault-search-tags.md"
+    }
+  ]
 }

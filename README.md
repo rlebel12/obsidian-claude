@@ -14,23 +14,12 @@ claude plugins add ~/code/obsidian-claude
 
 When Claude Code starts in an Obsidian vault (directory containing `.obsidian/`), the plugin automatically generates an index of all markdown files with their tags and descriptions. This gives Claude immediate context about available documentation.
 
-### Search Scripts
+### Skills
 
-Two scripts are available for finding vault content:
+Two skills are available for finding vault content:
 
-**vault-search** - Search document content using ripgrep:
-```bash
-vault-search <pattern> [vault_dir]
-```
-
-Returns matching lines grouped by file, with metadata headers showing tags and description.
-
-**vault-search-tags** - Find documents by tag:
-```bash
-vault-search-tags <tag> [vault_dir]
-```
-
-Returns all documents containing the specified tag in their frontmatter.
+- `/vault-search <pattern>` - Search document content using ripgrep. Returns matching lines grouped by file with metadata headers.
+- `/vault-search-tags <tag>` - Find documents by tag. Returns all documents containing the specified tag in frontmatter.
 
 ## Frontmatter Requirements
 
@@ -52,14 +41,12 @@ description: Brief one-line summary of the document
 
 ## CLAUDE.md Integration
 
-Add this section to your vault's CLAUDE.md to document the available scripts:
+Add this section to your vault's CLAUDE.md:
 
 ```markdown
-## Vault Discovery Scripts
+## Vault Discovery
 
-Scripts from obsidian plugin:
-- `vault-search <pattern>` - Search document content
-- `vault-search-tags <tag>` - Find documents by tag
+Vault indexing and search provided by the `obsidian` plugin from `obsidian-claude` marketplace. Use `/vault-search` and `/vault-search-tags` skills to search vault content.
 ```
 
 ## How It Works
