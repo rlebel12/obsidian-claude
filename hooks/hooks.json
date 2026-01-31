@@ -19,7 +19,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/vault-index.sh"
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/vault-index.sh",
+            "timeout": 10
           }
         ]
       }
