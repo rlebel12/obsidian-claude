@@ -13,8 +13,9 @@ Claude Code plugin for searching Obsidian vaults. Provides the `/vault-search` s
   plugin.json       # Plugin metadata
   marketplace.json  # Marketplace listing
 hooks/
-  hooks.json        # Hook definitions (empty - validation via init.sh)
+  hooks.json        # SessionStart hook for vault detection
 scripts/
+  detect-vault.sh   # SessionStart: detects vault, injects system-reminder
   init.sh           # Initialization: validates vault + shows document index
   vault-search.sh   # Content search via ripgrep
   vault-search-tags.sh  # Tag search via fd + awk

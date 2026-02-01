@@ -1,6 +1,6 @@
 ---
 name: vault-search
-description: Search notes in Obsidian vault. Use when user says "search notes", "search vault", "find notes", "look in my notes", or asks about documents in their vault.
+description: Research tool for user's personal knowledge base. Use when user says "search notes", "find notes", "check my notes", "what do I know about", or when discussing topics the user may have documented. Consider proactively when the user needs context that could exist in their notes.
 ---
 
 # Obsidian Vault Search

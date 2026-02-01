@@ -11,6 +11,8 @@ fi
 
 TAG="$1"
 VAULT_DIR="${CLAUDE_OBSIDIAN_VAULT_DIRECTORY:-$PWD}"
+# Expand tilde if present
+VAULT_DIR="${VAULT_DIR/#\~/$HOME}"
 
 # Header
 echo "File | Tags | Description"

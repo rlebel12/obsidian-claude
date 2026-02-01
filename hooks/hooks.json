@@ -1,4 +1,17 @@
 {
-  "description": "Obsidian vault discovery for Claude Code",
-  "hooks": {}
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/detect-vault.sh",
+            "timeout": 5,
+            "statusMessage": "Detecting Obsidian vault..."
+          }
+        ]
+      }
+    ]
+  }
 }

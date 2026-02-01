@@ -12,6 +12,8 @@ fi
 
 PATTERN="$1"
 VAULT_DIR="${CLAUDE_OBSIDIAN_VAULT_DIRECTORY:-$PWD}"
+# Expand tilde if present
+VAULT_DIR="${VAULT_DIR/#\~/$HOME}"
 
 # Get list of matching files
 files=$(rg --type md \

@@ -6,6 +6,8 @@ set -euo pipefail
 
 # Determine vault directory
 vault_dir="${CLAUDE_OBSIDIAN_VAULT_DIRECTORY:-$PWD}"
+# Expand tilde if present
+vault_dir="${vault_dir/#\~/$HOME}"
 
 # Check if it's a valid Obsidian vault
 if [[ ! -d "$vault_dir/.obsidian" ]]; then
