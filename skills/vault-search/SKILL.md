@@ -7,15 +7,15 @@ description: Research tool for user's personal knowledge base. Use when user say
 
 Search an Obsidian vault by content or by tag. Choose the appropriate tool based on what the user needs.
 
-## Required First Step
+## Initialization
 
-Before performing any search, ALWAYS run the initialization script:
+Run the init script to validate configuration and see usage:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/init.sh
+!`${CLAUDE_PLUGIN_ROOT}/scripts/init.sh`
 ```
 
-This validates the vault configuration and shows available documents. If it fails, follow the setup instructions in the error message.
+**Note**: When starting inside an Obsidian vault, the document index is automatically loaded via session hook. Use `index.sh` to refresh the index if needed.
 
 ## What This Skill Provides
 

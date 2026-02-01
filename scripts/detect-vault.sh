@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # detect-vault.sh: SessionStart hook to detect Obsidian vault presence
-# - If PWD is inside vault: instructs Claude to load the skill
+# - If PWD is inside vault: runs index.sh and includes output as context
 # - If vault configured elsewhere: provides awareness context
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 vault_dir="${CLAUDE_OBSIDIAN_VAULT_DIRECTORY:-$PWD}"
-# Expand tilde if present
 vault_dir="${vault_dir/#\~/$HOME}"
 
 # Check if vault exists
@@ -19,12 +20,16 @@ pwd_real="$(pwd -P)"
 vault_real="$(cd "$vault_dir" && pwd -P)"
 
 if [[ "$pwd_real" == "$vault_real" || "$pwd_real" == "$vault_real"/* ]]; then
-  # Inside vault - instruct Claude to load the skill
+  # Inside vault - run index and include output
+  index_output=$("$SCRIPT_DIR/index.sh" 2>&1)
+  # Escape for JSON
+  index_escaped=$(printf '%s' "$index_output" | jq -Rs .)
+
   cat <<EOF
 {
   "hookSpecificOutput": {
     "hookEventName": "SessionStart",
-    "additionalContext": "Session started inside Obsidian vault at $vault_dir. IMPORTANT: Invoke the vault-search skill now using the Skill tool to load the document index."
+    "additionalContext": ${index_escaped}
   }
 }
 EOF
