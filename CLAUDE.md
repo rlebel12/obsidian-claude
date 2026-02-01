@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Claude Code plugin for searching Obsidian vaults. Provides the `/vault-search` skill with content and tag search modes.
+Claude Code plugin for Obsidian vaults. Provides the `/obsidian` skill for searching vault content and authoring notes with consistent formatting.
 
 ## Architecture
 
@@ -20,8 +20,8 @@ scripts/
   vault-search.sh   # Content search via ripgrep
   vault-search-tags.sh  # Tag search via fd + awk
 skills/
-  vault-search/
-    SKILL.md        # Skill definition - instructs Claude to run init.sh first
+  obsidian/
+    SKILL.md        # Skill definition with search tools and authoring guidelines
 ```
 
 ## Key Environment Variable

@@ -41,7 +41,7 @@ else
 {
   "hookSpecificOutput": {
     "hookEventName": "SessionStart",
-    "additionalContext": "Obsidian vault detected at $vault_dir with $count documents. The vault-search skill is available for searching notes. Consider using it when the user asks about topics they may have documented, when research from personal notes would help, or when they reference 'my notes'."
+    "additionalContext": "Obsidian vault detected at $vault_dir with $count documents. The /obsidian skill is available for searching notes and authoring guidance. Consider using it when the user asks about topics they may have documented, when research from personal notes would help, or when they reference 'my notes'."
   }
 }
 EOF
