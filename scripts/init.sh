@@ -1,28 +1,40 @@
 #!/usr/bin/env bash
-# vault-index: Generate a lightweight index of vault documents
-# Extracts tags and description from frontmatter for quick Claude reference
-# Runs from plugin context - uses CWD as vault root
+# init.sh: Validate vault and show document index
+# Called by Claude before any vault search operation
 
 set -euo pipefail
 
-VAULT_DIR="${PWD}"
+# Determine vault directory
+vault_dir="${CLAUDE_OBSIDIAN_VAULT_DIRECTORY:-$PWD}"
 
-# Verify this looks like an Obsidian vault
-if [[ ! -d "${VAULT_DIR}/.obsidian" ]]; then
-    echo "Not an Obsidian vault (no .obsidian directory)"
-    exit 0
+# Check if it's a valid Obsidian vault
+if [[ ! -d "$vault_dir/.obsidian" ]]; then
+    cat <<EOF
+ERROR: No valid Obsidian vault found.
+
+The directory '$vault_dir' does not contain a .obsidian folder.
+
+To use vault search:
+  1. Set CLAUDE_OBSIDIAN_VAULT_DIRECTORY to your vault path, OR
+  2. Run Claude Code from within your Obsidian vault directory
+
+Example:
+  export CLAUDE_OBSIDIAN_VAULT_DIRECTORY=~/Documents/MyVault
+EOF
+    exit 1
 fi
 
-# Header
-echo "Available vault documentation (use vault-search or vault-search-tags for lookup):"
+echo "Vault: $vault_dir"
+echo ""
+echo "Available documents:"
 echo ""
 echo "File | Tags | Description"
 echo "---- | ---- | -----------"
 
 # Find all .md files, excluding system files
-fd -e md --exclude '.obsidian' --exclude '.scripts' --exclude 'CLAUDE.md' . "$VAULT_DIR" | sort | while read -r file; do
+fd -e md --exclude '.obsidian' --exclude '.scripts' --exclude 'CLAUDE.md' . "$vault_dir" | sort | while read -r file; do
     # Get relative path from vault root
-    relpath="${file#$VAULT_DIR/}"
+    relpath="${file#$vault_dir/}"
     filename="${relpath%.md}"
 
     # Extract frontmatter (between first --- and second ---)
@@ -46,3 +58,7 @@ fd -e md --exclude '.obsidian' --exclude '.scripts' --exclude 'CLAUDE.md' . "$VA
     # Output format: filename | tags | description
     printf "%s | %s | %s\n" "$filename" "${tags:--}" "${desc:--}"
 done
+
+echo ""
+echo "Use vault-search.sh <pattern> for content search"
+echo "Use vault-search-tags.sh <tag> for tag search"

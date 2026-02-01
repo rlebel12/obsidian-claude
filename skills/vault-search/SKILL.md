@@ -7,6 +7,16 @@ description: Search notes in Obsidian vault. Use when user says "search notes", 
 
 Search an Obsidian vault by content or by tag. Choose the appropriate tool based on what the user needs.
 
+## Required First Step
+
+Before performing any search, ALWAYS run the initialization script:
+
+```bash
+${CLAUDE_PLUGIN_ROOT}/scripts/init.sh
+```
+
+This validates the vault configuration and shows available documents. If it fails, follow the setup instructions in the error message.
+
 ## What This Skill Provides
 
 1. **Content Search** - Find documents containing specific words or phrases

@@ -1,29 +1,4 @@
 {
   "description": "Obsidian vault discovery for Claude Code",
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Skill(vault-search)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/validate-vault.sh",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Skill(vault-search)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/vault-index.sh",
-            "timeout": 10
-          }
-        ]
-      }
-    ]
-  }
+  "hooks": {}
 }

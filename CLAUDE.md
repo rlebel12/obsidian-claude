@@ -13,15 +13,14 @@ Claude Code plugin for searching Obsidian vaults. Provides the `/vault-search` s
   plugin.json       # Plugin metadata
   marketplace.json  # Marketplace listing
 hooks/
-  hooks.json        # Hook definitions (PreToolUse validation)
+  hooks.json        # Hook definitions (empty - validation via init.sh)
 scripts/
-  validate-vault.sh # PreToolUse hook - blocks if no vault configured
-  vault-index.sh    # Index generator (unused currently)
+  init.sh           # Initialization: validates vault + shows document index
   vault-search.sh   # Content search via ripgrep
   vault-search-tags.sh  # Tag search via fd + awk
 skills/
   vault-search/
-    SKILL.md        # Skill definition with YAML frontmatter
+    SKILL.md        # Skill definition - instructs Claude to run init.sh first
 ```
 
 ## Key Environment Variable
