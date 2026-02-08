@@ -7,18 +7,6 @@ description: Research and author Obsidian vault notes. Use when user says "searc
 
 Tools for searching and authoring Obsidian vault notes.
 
-## Initialization
-
-Run the init script to validate configuration and see usage:
-
-```bash
-!`${CLAUDE_PLUGIN_ROOT}/scripts/init.sh`
-```
-
-**Note**: When starting inside an Obsidian vault, the document index is automatically loaded via session hook. Use `index.sh` to refresh the index if needed.
-
----
-
 ## Part 1: Search Tools
 
 ### What Search Provides
