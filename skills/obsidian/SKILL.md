@@ -26,9 +26,7 @@ Tools for searching and authoring Obsidian vault notes.
 
 Search document content using ripgrep. Returns matching lines with context.
 
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/vault-search.sh <pattern>
-```
+`${CLAUDE_PLUGIN_ROOT}/scripts/vault-search.sh <pattern>`
 
 **Output**: Results grouped by file showing Name, Tags, Description, then matching lines.
 
@@ -36,9 +34,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/vault-search.sh <pattern>
 
 Find documents by frontmatter tag. Returns a table of matching documents.
 
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/vault-search-tags.sh <tag>
-```
+`${CLAUDE_PLUGIN_ROOT}/scripts/vault-search-tags.sh <tag>`
 
 **Output**: Markdown table with File, Tags, Description columns.
 
